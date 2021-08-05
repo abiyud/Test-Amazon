@@ -16,5 +16,6 @@ To run on your local computer, you need:
       ```
    - Or downloaded zip file on button code. Put this repo to your best folder :)
 3. Open this file repo on eclipse
-4. Okay, now you can run it :)
+4. Click right on testng.xml and run with TestNG Suite
+5. Okay, now you can run test automation with testng :)
 
