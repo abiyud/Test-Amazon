@@ -63,15 +63,15 @@ public class TestFilter {
 //		Validate list name "John"
 		Assert.assertEquals(!registries.getListSearch("John").isEmpty(), true);
 
-//		Change range date
+//		Change range date from January 2021 to April 2021
 		registries.getFromMonth().click();
-		registries.selectFromMonth("May").click();
+		registries.selectFromMonth("January").click();
 		registries.getFromYear().click();
-		registries.selectFromYear("2020").click();
+		registries.selectFromYear("2021").click();
 		registries.getToMonth().click();
-		registries.selectToMonth("December").click();
+		registries.selectToMonth("April").click();
 		registries.getToYear().click();
-		registries.selectToYear("2020").click();
+		registries.selectToYear("2021").click();
 		registries.getBtnFilter().click();
 
 //		Validate result from filter date
