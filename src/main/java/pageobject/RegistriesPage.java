@@ -19,6 +19,7 @@ public class RegistriesPage {
 	By btnToYear = By.id("a-autoid-4");
 	By btnFilterGift = By.id("a-autoid-5");
 	By listResultDate = By.xpath("//*[@id='search-result-container']//*[contains(@class,'date') and not(contains(@class,'header'))]");
+	By firstResultDate = By.xpath("(//*[@id='search-result-container']//div[contains(@class,'date') and not(contains(@class,'header'))])[1]");
 
 	public RegistriesPage(WebDriver driver) {
 		this.driver = driver;
@@ -95,5 +96,8 @@ public class RegistriesPage {
 	public List<WebElement> getListResultDate(){
 		return driver.findElements(listResultDate);
 	}
-
+	
+	public WebElement getFirstResultDate(){
+		return driver.findElement(firstResultDate);
+	}
 }

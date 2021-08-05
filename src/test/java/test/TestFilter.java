@@ -3,14 +3,19 @@ package test;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -36,7 +41,7 @@ public class TestFilter {
 	public void filterGift() throws InterruptedException, ParseException {
 //		Initialize
 		DashboardPage dashboard = new DashboardPage(driver);
-		RegistriesPage registries = new RegistriesPage(driver);
+		final RegistriesPage registries = new RegistriesPage(driver);
 		String web = "https://www.amazon.com/";
 		Date dateFrom;
 		Date dateTo;
@@ -75,7 +80,41 @@ public class TestFilter {
 		registries.getBtnFilter().click();
 
 //		Validate result from filter date
-		Thread.sleep(3000);
+
+		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(30))
+				.pollingEvery(Duration.ofSeconds(3)).ignoring(NoSuchElementException.class);
+
+		WebElement waitFirstData = wait.until(new Function<WebDriver, WebElement>() {
+
+			public WebElement apply(WebDriver driver) {
+				// TODO Auto-generated method stub
+				String fromDate = registries.getFromMonth().getAttribute("textContent") + " "
+						+ registries.getFromYear().getAttribute("textContent");
+				String toDate = registries.getToMonth().getAttribute("textContent") + " "
+						+ registries.getToYear().getAttribute("textContent");
+				DateFormat format = new SimpleDateFormat("MMMM yyyy", Locale.ENGLISH);
+				String[] yearSelect = registries.getFirstResultDate().getText().split(",");
+				String[] monthSelect = registries.getFirstResultDate().getText().split(" ");
+				String temp = monthSelect[0] + " " + yearSelect[1];
+				try {
+					Date dateFrom = format.parse(fromDate);
+					Date dateTo = format.parse(toDate);
+					Date date = format.parse(temp);
+					if (date.getTime() > dateFrom.getTime() && date.getTime() < dateTo.getTime()
+							|| date.getTime() == dateFrom.getTime() || date.getTime() == dateTo.getTime()) {
+						return registries.getFirstResultDate();
+					} else {
+						return null;
+					}
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return null;
+			}
+		});
+//		Thread.sleep(3000);
+
 		String fromDate = registries.getFromMonth().getAttribute("textContent") + " "
 				+ registries.getFromYear().getAttribute("textContent");
 		String toDate = registries.getToMonth().getAttribute("textContent") + " "
@@ -93,6 +132,7 @@ public class TestFilter {
 			Assert.assertEquals(date.getTime() > dateFrom.getTime() && date.getTime() < dateTo.getTime()
 					|| date.getTime() == dateFrom.getTime() || date.getTime() == dateTo.getTime(), true);
 		}
+
 	}
 
 	@AfterMethod
