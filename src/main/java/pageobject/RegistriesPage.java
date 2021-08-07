@@ -20,6 +20,7 @@ public class RegistriesPage {
 	By btnFilterGift = By.id("a-autoid-5");
 	By listResultDate = By.xpath("//*[@id='search-result-container']//*[contains(@class,'date') and not(contains(@class,'header'))]");
 	By firstResultDate = By.xpath("(//*[@id='search-result-container']//div[contains(@class,'date') and not(contains(@class,'header'))])[1]");
+	By txtDataNotFound = By.xpath("//*[normalize-space(text())='Sorry, no Birthday Gift Lists match your search.']");
 
 	public RegistriesPage(WebDriver driver) {
 		this.driver = driver;
@@ -99,5 +100,8 @@ public class RegistriesPage {
 	
 	public WebElement getFirstResultDate(){
 		return driver.findElement(firstResultDate);
+	}
+	public WebElement getTxtNotFound() {
+		return driver.findElement(txtDataNotFound);
 	}
 }

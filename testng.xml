@@ -3,11 +3,19 @@
 <suite name="Suite">
 	<test name="Test Filter">
 		<classes>
-			<class name="test.TestFilter">
+			<class name="test.FilterNotFound">
 				<methods>
-					<include name="filterGift" />
+					<include name="dataNotFound" />
 				</methods>
 			</class>
+			<class name="test.FilterNotFound">
+				<methods>
+					<include name="dataNotFound" />
+				</methods>
+			</class>
+			<!--<class name="test.TestFilter"> <methods> <include name="filterGift" 
+				/> </methods> </class> -->
+
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
