@@ -54,9 +54,6 @@ public class FilterNotFound {
 		registries.getOption("Birthday Gift List").click();
 		registries.getBtnSearch().click();
 
-//		Validate list name "tttttttest"
-		Assert.assertEquals(!registries.getListSearch("tttttttest").isEmpty(), true);
-
 //		Change range date from January 2021 to April 2021
 		registries.getFromMonth().click();
 		registries.selectFromMonth("January").click();
@@ -70,6 +67,7 @@ public class FilterNotFound {
 
 //		Validate result from filter date
 		WebElement element = waitUntil.waitUntilElement(30, registries.getTxtNotFound());
+		System.out.println(element+" Ini Element");
 		Assert.assertEquals(element.isDisplayed(), true);
 		
 	}

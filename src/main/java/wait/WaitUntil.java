@@ -11,10 +11,9 @@ import org.openqa.selenium.support.ui.Wait;
 
 public class WaitUntil {
 	private WebDriver driver;
-	public final WebElement element;
+	public final WebElement element=null;
 
 	public WaitUntil(WebDriver driver) {
-		this.element = null;
 		this.driver = driver;
 	}
 
@@ -32,6 +31,6 @@ public class WaitUntil {
 			}
 
 		});
-		return null;
+		return element;
 	}
 }
