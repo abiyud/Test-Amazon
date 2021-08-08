@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import wait.WaitUntil;
+
 public class RegistriesPage {
 
 	public WebDriver driver;
@@ -21,7 +23,9 @@ public class RegistriesPage {
 	By listResultDate = By.xpath("//*[@id='search-result-container']//*[contains(@class,'date') and not(contains(@class,'header'))]");
 	By firstResultDate = By.xpath("(//*[@id='search-result-container']//div[contains(@class,'date') and not(contains(@class,'header'))])[1]");
 	By txtDataNotFound = By.xpath("//*[normalize-space(text())='Sorry, no Birthday Gift Lists match your search.']");
-
+	
+	
+	
 	public RegistriesPage(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -103,5 +107,10 @@ public class RegistriesPage {
 	}
 	public WebElement getTxtNotFound() {
 		return driver.findElement(txtDataNotFound);
+	}
+	public WebElement waitTxtNotFound(int timeout) {
+		WaitUntil waitUntil = new WaitUntil(driver);
+		return waitUntil.waitUntilElement(10, txtDataNotFound);
+		
 	}
 }

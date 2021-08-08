@@ -2,24 +2,24 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-08-05T16:20:24 WIB" name="Default suite" finished-at="2021-08-05T16:21:02 WIB" duration-ms="37699">
+  <suite started-at="2021-08-08T11:19:19 WIB" name="Suite" finished-at="2021-08-08T11:19:34 WIB" duration-ms="14359">
     <groups>
     </groups>
-    <test started-at="2021-08-05T16:20:24 WIB" name="Default test" finished-at="2021-08-05T16:21:02 WIB" duration-ms="37699">
-      <class name="test.TestFilter">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:test.TestFilter@12b0404f]" started-at="2021-08-05T16:20:24 WIB" name="setUp" finished-at="2021-08-05T16:20:29 WIB" duration-ms="4261" status="PASS">
+    <test started-at="2021-08-08T11:19:19 WIB" name="Filter Not Found" finished-at="2021-08-08T11:19:34 WIB" duration-ms="14359">
+      <class name="test.FilterNotFound">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:test.FilterNotFound@419c5f1a]" started-at="2021-08-08T11:19:19 WIB" name="setUp" finished-at="2021-08-08T11:19:22 WIB" duration-ms="3042" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="filterGift()[pri:0, instance:test.TestFilter@12b0404f]" started-at="2021-08-05T16:20:29 WIB" name="filterGift" finished-at="2021-08-05T16:21:01 WIB" duration-ms="32713" status="PASS">
+        <test-method signature="dataNotFound()[pri:0, instance:test.FilterNotFound@419c5f1a]" started-at="2021-08-08T11:19:22 WIB" name="dataNotFound" finished-at="2021-08-08T11:19:33 WIB" duration-ms="10656" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- filterGift -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:test.TestFilter@12b0404f]" started-at="2021-08-05T16:21:01 WIB" name="tearDown" finished-at="2021-08-05T16:21:02 WIB" duration-ms="598" status="PASS">
+        </test-method> <!-- dataNotFound -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:test.FilterNotFound@419c5f1a]" started-at="2021-08-08T11:19:33 WIB" name="tearDown" finished-at="2021-08-08T11:19:34 WIB" duration-ms="540" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- test.TestFilter -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+      </class> <!-- test.FilterNotFound -->
+    </test> <!-- Filter Not Found -->
+  </suite> <!-- Suite -->
 </testng-results>

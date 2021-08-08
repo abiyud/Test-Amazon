@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Test Filter(failed)">
+  <test thread-count="5" name="Filter Not Found(failed)">
     <classes>
-      <class name="test.TestFilter">
+      <class name="test.FilterNotFound">
         <methods>
-          <include name="filterGift"/>
           <include name="setUp"/>
+          <include name="dataNotFound"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- test.TestFilter -->
+      </class> <!-- test.FilterNotFound -->
     </classes>
-  </test> <!-- Test Filter(failed) -->
+  </test> <!-- Filter Not Found(failed) -->
 </suite> <!-- Failed suite [Suite] -->
