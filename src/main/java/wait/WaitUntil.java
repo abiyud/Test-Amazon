@@ -7,8 +7,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WaitUntil {
 	private WebDriver driver;
@@ -17,7 +19,7 @@ public class WaitUntil {
 		this.driver = driver;
 	}
 
-	public WebElement waitUntilElement(int timeout, final By by) {
+	public WebElement waitUntilElement(int timeout, int pollingTime, final By by) {
 		
 		
 		Wait<WebDriver> wait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(timeout))
@@ -31,7 +33,12 @@ public class WaitUntil {
 			}
 
 		});
-		WebElement elem = element;
-		return elem;
+		WebElement tempElement = element;
+		return tempElement;
+	}
+	
+	public WebElement waitUntilLoad(int timeout, By by) {
+		WebDriverWait wait = new WebDriverWait(driver,timeout);
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(by));
 	}
 }

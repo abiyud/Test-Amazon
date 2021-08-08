@@ -8,9 +8,11 @@
 					<include name="dataNotFound" />
 				</methods>
 			</class>
-			<!--<class name="test.TestFilter"> <methods> <include name="filterGift" 
-				/> </methods> </class> -->
-
+			<class name="test.FilterFound">
+				<methods>
+					<include name="filterGift" />
+				</methods>
+			</class>
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

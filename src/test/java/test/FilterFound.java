@@ -24,7 +24,7 @@ import org.testng.annotations.Test;
 import pageobject.DashboardPage;
 import pageobject.RegistriesPage;
 
-public class TestFilter {
+public class FilterFound {
 	private WebDriver driver;
 
 	@BeforeMethod

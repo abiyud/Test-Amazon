@@ -1,11 +1,13 @@
 package test;
 
 import java.text.ParseException;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -33,7 +35,6 @@ public class FilterNotFound {
 //		Initialize
 		DashboardPage dashboard = new DashboardPage(driver);
 		RegistriesPage registries = new RegistriesPage(driver);
-		WaitUntil waitUntil = new WaitUntil(driver);
 		String web = "https://www.amazon.com/";
 
 //		Open web Amazon.com
@@ -55,7 +56,7 @@ public class FilterNotFound {
 		registries.getBtnSearch().click();
 
 //		Validate result from filter date
-		WebElement element = registries.waitTxtNotFound(30);
+		WebElement element = registries.waitTxtNotFound(10);
 		System.out.println(element.isDisplayed()+" Ini Element");
 		Assert.assertTrue(element.isDisplayed());
 	}

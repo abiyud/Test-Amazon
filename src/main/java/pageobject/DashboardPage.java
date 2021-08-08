@@ -8,6 +8,7 @@ public class DashboardPage {
 	
 	public WebDriver driver;
 	
+	By inputSearch = By.id("twotabsearchtextbox");
 	By btnDontChange = By.xpath("//*[contains(@class,'toaster')]//*[contains(text(),'Don')]/preceding-sibling::input");
 	By logoApp = By.id("nav-logo-sprites");
 
@@ -25,6 +26,10 @@ public class DashboardPage {
 	
 	public WebElement getBtnDontChange() {
 		return driver.findElement(btnDontChange);
+	}
+	
+	public WebElement getInputSearch() {
+		return driver.findElement(inputSearch);
 	}
 	
 }
