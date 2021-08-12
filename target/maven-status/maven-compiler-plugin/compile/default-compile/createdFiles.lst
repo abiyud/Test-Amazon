@@ -1,4 +1,6 @@
+wait\WaitUntil$2.class
 wait\WaitUntil.class
+wait\WaitUntil$3.class
 pageobject\RegistriesPage.class
 pageobject\DashboardPage.class
 wait\WaitUntil$1.class

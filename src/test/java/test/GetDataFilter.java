@@ -25,7 +25,7 @@ import pageobject.DashboardPage;
 import pageobject.RegistriesPage;
 import wait.WaitUntil;
 
-public class FilterFound {
+public class GetDataFilter {
 	private WebDriver driver;
 
 	@BeforeMethod
@@ -39,10 +39,10 @@ public class FilterFound {
 	}
 
 	@Test
-	public void filterGift() throws ParseException {
+	public void filterGift() throws InterruptedException, ParseException {
 //		Initialize
 		DashboardPage dashboard = new DashboardPage(driver);
-		final RegistriesPage registries = new RegistriesPage(driver);
+		RegistriesPage registries = new RegistriesPage(driver);
 		WaitUntil waitUntil = new WaitUntil(driver);
 		String web = "https://www.amazon.com/";
 		Date dateFrom;
@@ -81,33 +81,32 @@ public class FilterFound {
 		registries.selectToYear("2021").click();
 		registries.getBtnFilter().click();
 
-//		Validate result from filter date
-		try {
-			waitUntil.waitLoadElements(registries.getListResultDate(), 10);
-		} catch (Exception e) {
-			e.getMessage();
-		}
 		
 		String fromDate = registries.getFromMonth().getAttribute("textContent") + " "
 				+ registries.getFromYear().getAttribute("textContent");
 		String toDate = registries.getToMonth().getAttribute("textContent") + " "
 				+ registries.getToYear().getAttribute("textContent");
-		
 		DateFormat format = new SimpleDateFormat("MMMM yyyy", Locale.ENGLISH);
 		dateFrom = format.parse(fromDate);
 		dateTo = format.parse(toDate);
 		
-		List<WebElement> elements = registries.getListResultDate();
+//		Validate result from filter date
+
+//		WebElement elementDate = registries.getListResultDate().get(0);
 		
-		for (int i = 0; i < elements.size(); i++) {
-			String[] yearSelect = elements.get(i).getText().split(",");
-			String[] monthSelect = elements.get(i).getText().split(" ");
-			String temp = monthSelect[0] + " " + yearSelect[1];
-			date = format.parse(temp);
-			System.out.println(date+" ni tanggal");
-			Assert.assertEquals(date.getTime() > dateFrom.getTime() && date.getTime() < dateTo.getTime()
-					|| date.getTime() == dateFrom.getTime() || date.getTime() == dateTo.getTime(), true);
-		}
+		
+//		Thread.sleep(3000);
+
+//		List<WebElement> elements = registries.getListResultDate();
+//		for (int i = 0; i < elements.size(); i++) {
+//			String[] yearSelect = elements.get(i).getText().split(",");
+//			String[] monthSelect = elements.get(i).getText().split(" ");
+//			String temp = monthSelect[0] + " " + yearSelect[1];
+//			date = format.parse(temp);
+//			Assert.assertEquals(date.getTime() > dateFrom.getTime() && date.getTime() < dateTo.getTime()
+//					|| date.getTime() == dateFrom.getTime() || date.getTime() == dateTo.getTime(), true);
+//		}
+
 	}
 
 	@AfterMethod

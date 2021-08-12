@@ -15,6 +15,7 @@ public class RegistriesPage {
 	By inputName = By.name("name");
 	By drpdwnSearchUrl = By.xpath("//*[@name='searchUrl']/following-sibling::*");
 	By btnSearch = By.xpath("//button[normalize-space()='Search']");
+	By btnLocation = By.id("a-autoid-0");
 	By btnFromMonth = By.id("a-autoid-1");
 	By btnFromYear = By.id("a-autoid-2");
 	By btnToMonth = By.id("a-autoid-3");
@@ -25,7 +26,9 @@ public class RegistriesPage {
 	By firstResultDate = By.xpath(
 			"(//*[@id='search-result-container']//div[contains(@class,'date') and not(contains(@class,'header'))])[1]");
 	By txtDataNotFound = By.xpath("//*[normalize-space(text())='Sorry, no Birthday Gift Lists match your search.']");
-
+	WaitUntil waitUntil = new WaitUntil(driver);
+	
+	
 	public RegistriesPage(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -57,6 +60,10 @@ public class RegistriesPage {
 						+ temp + "')]"));
 	}
 
+	public WebElement getLocation() {
+		return driver.findElement(btnLocation);
+	}
+
 	public WebElement getFromMonth() {
 		return driver.findElement(btnFromMonth);
 	}
@@ -71,6 +78,11 @@ public class RegistriesPage {
 
 	public WebElement getToYear() {
 		return driver.findElement(btnToYear);
+	}
+	
+	public WebElement selectLocation(String text) {
+		return driver.findElement(
+				By.xpath("//*[contains(@id,'gr-search-state') and normalize-space()='" + text + "']/parent::*"));
 	}
 
 	public WebElement selectFromMonth(String text) {
@@ -100,6 +112,12 @@ public class RegistriesPage {
 	public List<WebElement> getListResultDate() {
 		return driver.findElements(listResultDate);
 	}
+	
+	public List<WebElement> waitListResultDate() {
+		System.out.println(waitUntil.waitFluentElements(listResultDate)+" Inside page");
+		return waitUntil.waitFluentElements(listResultDate);
+	}
+
 
 	public WebElement getFirstResultDate() {
 		return driver.findElement(firstResultDate);
@@ -109,8 +127,9 @@ public class RegistriesPage {
 		return driver.findElement(txtDataNotFound);
 	}
 
-	public WebElement waitTxtNotFound(int timeout) {
-		WaitUntil waitUntil = new WaitUntil(driver);
-		return waitUntil.waitUntilLoad(timeout, txtDataNotFound);
+	public WebElement waitTxtNotFound() {
+		
+		System.out.println(waitUntil.waitFluentElement(txtDataNotFound)+" from page");
+		return waitUntil.waitFluentElement(txtDataNotFound);
 	}
 }

@@ -3,11 +3,11 @@
 <suite name="Suite">
 	<test name="Filter Not Found">
 		<classes>
-			<class name="test.FilterNotFound">
+			<!-- <class name="test.FilterNotFound">
 				<methods>
 					<include name="dataNotFound" />
 				</methods>
-			</class>
+			</class>-->
 			<class name="test.FilterFound">
 				<methods>
 					<include name="filterGift" />

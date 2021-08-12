@@ -1,3 +1,4 @@
-test\TestFilter.class
-test\TestFilter$1.class
+test\GetDataFilter.class
+test\SearchData.class
 test\FilterNotFound.class
+test\FilterFound.class
